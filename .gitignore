@@ -3,7 +3,7 @@ node_modules
 npm-debug.log
 
 # Client Modules installed using bower.
-libs
+#libs
 
 # Public image uploads folder for app icons.
 client/assets/img/uploads
