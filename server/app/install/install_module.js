@@ -354,7 +354,8 @@ var installData = function(db, config, Schema, logKey, file, defaultValues, log)
   Schema = db.model(Schema);
   if( ! file) {
     file = pluralize(Schema.modelName);
-    file = file.charAt(0).toLowerCase() + file.slice(1) + ".js";
+    //file = file.charAt(0).toLowerCase() + file.slice(1) + ".js";
+    file = file.toLowerCase() + ".js";
   }
 
   return function(next) {
