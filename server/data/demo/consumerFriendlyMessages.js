@@ -11,11 +11,7 @@
 													{
 														"enabled": true,
 														"tts": "This version of appName is not authorized and will not work with SDL.",
-														"lines": [
-																		{
-																			"line1": "Not Authorized"
-																		}
-																	]
+														"line1": "Not Authorized"
 													}
 												]
 							}, {
@@ -24,12 +20,8 @@
 													{
 														"enabled": true,
 														"tts": "To use mobile apps with SDL, SDL may use your mobile devices's data plan... ",
-														"lines": [
-																		{
-																			"line1": "Enable Mobile Apps",
-																			"line2": "on SDL? (Uses Data)"
-																		}
-																	]
+														"line1": "Enable Mobile Apps",
+														"line2": "on SDL? (Uses Data)"
 													}
 												]
 							}	
