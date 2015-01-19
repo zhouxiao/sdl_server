@@ -146,7 +146,8 @@ var install = function(cb) {
       installData(db, config, "Category", "name", undefined, undefined, log),
       installData(db, config, "HmiLevel", "name", undefined, undefined, log),
       installData(db, config, "Language", "language", "languages.js", undefined, log),
-      installData(db, config, "Country", "country", "countries.js", undefined, log)
+      installData(db, config, "Country", "country", "countries.js", undefined, log),
+      installCfmDemo(db, config, log)
     ], function(err, results) {
       cb(err, results);
 
@@ -238,7 +239,7 @@ var installDemo = function(cb) {
 
   async.series([
     installCfmDemo(db, config, log),
-    installData(db, config, "User", "name", "demo/users.js", { "password" : this.config.installKey, "securityAnswer": this.config.installKey }, log),
+   installData(db, config, "User", "name", "demo/users.js", { "password" : this.config.installKey, "securityAnswer": this.config.installKey }, log),
     installData(db, config, "Application", "name", "demo/applications.js", undefined, log),
     installData(db, config, "FunctionalGroup", "name", "demo/functionalGroups.js", undefined, log)
   ], cb);
