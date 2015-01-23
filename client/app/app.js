@@ -38,13 +38,17 @@ var modules = [
 	'SDL.consumerFriendlyMessage',
 	'SDL.functionalGroups',
 	'SDL.functionalGroup',
+	
 	'SDL.messageType',
 	'SDL.body',
 
 	'SDL.iff',
-
+	
   'toggle-switch',
-  'angularFileUpload'
+  'angularFileUpload',
+  
+  'SDL.Demos'
+	
 ];
 
 var app = angular.module('SDL', modules)
@@ -123,12 +127,14 @@ app.config(function($stateProvider, $urlRouterProvider, $locationProvider) {
     .state('consumerFriendlyMessageCreate', { url: '/consumerFriendlyMessages/create', templateUrl: '/policy/consumerFriendlyMessage.html', controller: 'consumerFriendlyMessageCtrl', activeTab: 'policies', roles: allRoles })
     .state('consumerFriendlyMessage', { url: '/consumerFriendlyMessages/:id?activeFormId', templateUrl: '/policy/consumerFriendlyMessage.html', controller: 'consumerFriendlyMessageCtrl', activeTab: 'policies', roles: allRoles })
 
-		.state('messageTypeCreate', { url: '/messageTypes/create?consumerFriendlyMessageId', templateUrl: '/policy/messageType.html', controller: 'messageTypeCtrl', activeTab: 'policies', roles: allRoles })
-		.state('messageType', { url: '/messageTypes/:id?activeFormId&consumerFriendlyMessageId', templateUrl: '/policy/messageType.html', controller: 'messageTypeCtrl', activeTab: 'policies', roles: allRoles })
+	.state('messageTypeCreate', { url: '/messageTypes/create?consumerFriendlyMessageId', templateUrl: '/policy/messageType.html', controller: 'messageTypeCtrl', activeTab: 'policies', roles: allRoles })
+	.state('messageType', { url: '/messageTypes/:id?activeFormId&consumerFriendlyMessageId', templateUrl: '/policy/messageType.html', controller: 'messageTypeCtrl', activeTab: 'policies', roles: allRoles })
 
-		.state('functionalGroups', { url: '/functionalGroups', templateUrl: '/policy/functionalGroups.html', controller: 'functionalGroupsCtrl', activeTab: 'policies', roles: allRoles })
-		.state('functionalGroupCreate', { url: '/functionalGroups/create', templateUrl: '/policy/functionalGroup.html', controller: 'functionalGroupCtrl', activeTab: 'policies', roles: allRoles })
-		.state('functionalGroup', { url: '/functionalGroups/:id?activeFormId', templateUrl: '/policy/functionalGroup.html', controller: 'functionalGroupCtrl', activeTab: 'policies', roles: allRoles })
+	.state('functionalGroups', { url: '/functionalGroups', templateUrl: '/policy/functionalGroups.html', controller: 'functionalGroupsCtrl', activeTab: 'policies', roles: allRoles })
+	.state('functionalGroupCreate', { url: '/functionalGroups/create', templateUrl: '/policy/functionalGroup.html', controller: 'functionalGroupCtrl', activeTab: 'policies', roles: allRoles })
+	.state('functionalGroup', { url: '/functionalGroups/:id?activeFormId', templateUrl: '/policy/functionalGroup.html', controller: 'functionalGroupCtrl', activeTab: 'policies', roles: allRoles })
+
+	.state('demos', { url: '/demos', templateUrl: '/policy/demos.html', controller: 'DemosCtrl', activeTab: 'policies', roles: allRoles })
 
     /******** Unhandled Routes ********/
 

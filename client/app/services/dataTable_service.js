@@ -447,9 +447,9 @@ angular.module('SDL.dataTableService', []).factory('DataTableService', ['$filter
 					$log.error('Cannot reload a data table without a valid restangular object.");')
 					return;
 				}
-
-				// Get data from the backend server.
-				$rootScope[tableName].data.restangular.getList().then(function(data) {
+				
+					// Get data from the backend server.
+					$rootScope[tableName].data.restangular.getList().then(function(data) {
 
 					// Format the data
 					$rootScope[tableName].data.formatFn(data, function(err, data) {
@@ -460,8 +460,8 @@ angular.module('SDL.dataTableService', []).factory('DataTableService', ['$filter
 						// Reload the table now that data is available.
 						$rootScope[tableName].ngTableParams.reload();
 					});
-				});
-			},
+					});
+				},
 
 			createWithPromise: function(tableName, dataPromise, tableParams, tableSettings, overwrite) {
 				// Ensure table name and data are defined.
