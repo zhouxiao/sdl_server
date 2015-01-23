@@ -204,7 +204,7 @@ Config.prototype.default = {
   // Socket.io is the framework used, these are settings related to
   // Socket.io and web sockets in general.
   socketio: {
-    enabled: true                        // Enable socket.io
+    enabled: false                       // Enable socket.io
   },
 
   // Foxjs system settings, these affect foxjs internal libraries.
