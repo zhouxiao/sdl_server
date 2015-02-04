@@ -146,8 +146,7 @@ var install = function(cb) {
       installData(db, config, "Category", "name", undefined, undefined, log),
       installData(db, config, "HmiLevel", "name", undefined, undefined, log),
       installData(db, config, "Language", "language", "languages.js", undefined, log),
-      installData(db, config, "Country", "country", "countries.js", undefined, log),
-      installCfmDemo(db, config, log)
+      installData(db, config, "Country", "country", "countries.js", undefined, log)
     ], function(err, results) {
       cb(err, results);
 
@@ -239,9 +238,11 @@ var installDemo = function(cb) {
 
   async.series([
     installCfmDemo(db, config, log),
-   installData(db, config, "User", "name", "demo/users.js", { "password" : this.config.installKey, "securityAnswer": this.config.installKey }, log),
+    installData(db, config, "User", "name", "demo/users.js", { "password" : this.config.installKey, "securityAnswer": this.config.installKey }, log),
     installData(db, config, "Application", "name", "demo/applications.js", undefined, log),
-    installData(db, config, "FunctionalGroup", "name", "demo/functionalGroups.js", undefined, log)
+    installData(db, config, "FunctionalGroup", "name", "demo/functionalGroups.js", undefined, log),
+    installData(db, config, "Module", "id", "demo/modules.js", undefined, log),
+    installData(db, config, "Vehicle", "id", "demo/vehicles.js", undefined, log)
   ], cb);
 };
 
@@ -258,7 +259,9 @@ var uninstallDemo = function(cb) {
     uninstallCfmDemo(db, config, log),
     uninstallData(db, config, "User", "name", "demo/users.js", log),
     uninstallData(db, config, "Application", "name", "demo/applications.js", log),
-    uninstallData(db, config, "FunctionalGroup", "name", "demo/functionalGroups.js", log)
+    uninstallData(db, config, "FunctionalGroup", "name", "demo/functionalGroups.js", log),
+    uninstallData(db, config, "Module", "id", "demo/modules.js", log),
+    uninstallData(db, config, "Vehicle", "id", "demo/vehicles.js", log)
   ], cb);
 };
 
@@ -355,8 +358,7 @@ var installData = function(db, config, Schema, logKey, file, defaultValues, log)
   Schema = db.model(Schema);
   if( ! file) {
     file = pluralize(Schema.modelName);
-    //file = file.charAt(0).toLowerCase() + file.slice(1) + ".js";
-    file = file.toLowerCase() + ".js";
+    file = file.charAt(0).toLowerCase() + file.slice(1) + ".js";
   }
 
   return function(next) {
@@ -744,6 +746,7 @@ var getDataFromFile = function(config, location, next) {
       try {
         data = JSON.parse(data);
       } catch (err) {
+        console.log("Invalid json in file: " + path.normalize(location));
         return next(err);
       }
 
